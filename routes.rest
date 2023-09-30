@@ -1,0 +1,19 @@
+GET http://localhost:3000/contacts
+###
+GET http://localhost:3000/contacts/650f47d73b86321bfe6961b5
+###
+GET http://getnameupdated.onrender.com/contacts
+###
+GET http://getnameupdated.onrender.com/contacts/650f47d73b86321bfe6961b5
+###
+POST http://localhost:3000/contacts/ HTTP/1.1
+content-type: application/json
+
+{"firstName": "Jim", "lastName": "Person", "email": "example@email.com", "favoriteColor": "red", "birthday": "01/01/1001"}
+###
+PUT http://localhost:3000/contacts/651874bf2a8b3c11681affc0 HTTP/1.1
+content-type: application/json
+
+{"firstName": "Jim", "lastName": "YEET", "email": "example@email.com", "favoriteColor": "red", "birthday": "01/01/1001"}
+###
+DELETE http://localhost:3000/contacts/651873f4ac0deee6bb305d96 HTTP/1.1
