@@ -2,6 +2,7 @@ const mongodb = require('../db/connect');
 const ObjectId = require('mongodb').ObjectId;
 
 async function getAll(req, res) {
+    // #swagger.description = 'Get all the contacts'
     const result = await mongodb.getDb().db().collection('contacts').find();
     result.toArray().then((lists) => {
         res.setHeader('Content-Type', 'application/json');
@@ -10,6 +11,7 @@ async function getAll(req, res) {
 }
 
 async function getSingle(req, res) {
+    // #swagger.description = 'Get one of the contacts'
     const id = new ObjectId(req.params.id);
     const result = await mongodb.getDb().db().collection('contacts').find({_id: id});
     result.toArray().then((lists) => {
@@ -19,6 +21,7 @@ async function getSingle(req, res) {
 }
 
 async function addContact(req, res) {
+    // #swagger.description = 'Add one of the contacts'
     const person = {firstName: req.body.firstName, lastName: req.body.lastName, email: req.body.email, favoriteColor: req.body.favoriteColor, birthday: req.body.birthday};
     const result = await mongodb.getDb().db().collection('contacts').insertOne(person);
     
@@ -30,6 +33,7 @@ async function addContact(req, res) {
 }
 
 async function updateContact(req, res) {
+    // #swagger.description = 'Update one of the contacts'
     const person = {firstName: req.body.firstName, lastName: req.body.lastName, email: req.body.email, favoriteColor: req.body.favoriteColor, birthday: req.body.birthday};
     const id = new ObjectId(req.params.id);
     const result = await mongodb.getDb().db().collection('contacts').replaceOne({_id:id}, person);
@@ -42,6 +46,7 @@ async function updateContact(req, res) {
 }
 
 async function deleteContact(req, res) {
+    // #swagger.description = 'Delete one of the contacts'
     const id = new ObjectId(req.params.id);
     const result = await mongodb.getDb().db().collection('contacts').deleteOne({_id:id});
     if (result.deletedCount > 0) {
