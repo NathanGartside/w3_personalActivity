@@ -5,8 +5,16 @@ const doc = {
     title: 'Contacts API',
     description: 'List of people',
   },
-  host: 'localhost:3000',
-  schemes: ['http'],
+  servers: [
+    {
+        url: "http://localhost:3000/",
+        description: "Local server"
+    },
+    {
+        url: "https://contactscrud.onrender.com/",
+        description: "Live server"
+    }
+  ],
 };
 
 const outputFile = './swagger-output.json';
